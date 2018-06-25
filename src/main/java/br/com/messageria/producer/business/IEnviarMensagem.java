@@ -5,6 +5,6 @@ import java.util.concurrent.TimeoutException;
 
 public interface IEnviarMensagem {
 	
-	public void enviarMensagem() throws IOException, TimeoutException;
+	public void enviarMensagem(String[] args) throws IOException, TimeoutException;
 
 }

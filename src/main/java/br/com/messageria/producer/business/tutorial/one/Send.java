@@ -1,4 +1,4 @@
-package br.com.messageria.producer.business;
+package br.com.messageria.producer.business.tutorial.one;
 
 import java.io.IOException;
 import java.util.Date;
@@ -8,12 +8,13 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 
+import br.com.messageria.producer.business.IEnviarMensagem;
 import br.com.messageria.producer.mocks.seeds.JsonExampleSeed;
 
-public class TutorialOne implements IEnviarMensagem {
+public class Send implements IEnviarMensagem {
 	private final static String QUEUE_NAME = "hello";
 	
-	public void enviarMensagem() throws IOException, TimeoutException {
+	public void enviarMensagem(String[] argv) throws IOException, TimeoutException {
 
     	ConnectionFactory factory = new ConnectionFactory();
     	factory.setHost("localhost");
