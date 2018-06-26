@@ -1,4 +1,4 @@
-package br.com.messageria.producer.mocks.seeds;
+package br.com.producer.mocks.seeds;
 
 import java.io.IOException;
 import java.io.InputStream;

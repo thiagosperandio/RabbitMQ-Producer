@@ -1,4 +1,4 @@
-package br.com.messageria.producer.business.tutorial.two;
+package br.com.producer.business.tutorial.two;
 
 import java.io.IOException;
 import java.util.Date;
@@ -9,7 +9,7 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.MessageProperties;
 
-import br.com.messageria.producer.business.IEnviarMensagem;
+import br.com.producer.business.IEnviarMensagem;
 
 public class NewTask implements IEnviarMensagem {
 	private final static String QUEUE_NAME = "task_queue";
@@ -21,19 +21,22 @@ public class NewTask implements IEnviarMensagem {
     	Connection connection = factory.newConnection();
     	Channel channel = connection.createChannel();
     	
-    	boolean durable = true;
+    	boolean durable = true; // Fila deve ser persistida no servidor, mantendo-a caso ele páre.
     	channel.queueDeclare(QUEUE_NAME, durable, false, false, null);
     	
     	// Envio de Texto comum:
     	String message = getMessage(argv) + " - em " + (new Date());
     	channel.basicPublish("", QUEUE_NAME, 
-    			MessageProperties.PERSISTENT_TEXT_PLAIN, 
+    			MessageProperties.PERSISTENT_TEXT_PLAIN,  // Mensagem deve ser persistida no servidor, mantendo-a caso ele páre.
     			message.getBytes());
     	System.out.println(" [x] Sent '" + message + "'");
     	
     	/*// Envio de Objeto JSON:
     	JsonExampleSeed message2 = new JsonExampleSeed();
-    	channel.basicPublish("", QUEUE_NAME, MessageProperties.PERSISTENT_TEXT_PLAIN, message2.getExemploJson().toString().getBytes());
+    	channel.basicPublish("", 
+    			QUEUE_NAME, 
+    			MessageProperties.PERSISTENT_TEXT_PLAIN, 
+    			message2.getExemploJson().toString().getBytes());
     	System.out.println(" [x] Sent '" + message2.getExemploJson().toString() + "'");*/
     	
     	channel.close();

@@ -1,4 +1,4 @@
-package br.com.messageria.producer.business;
+package br.com.producer.business;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;

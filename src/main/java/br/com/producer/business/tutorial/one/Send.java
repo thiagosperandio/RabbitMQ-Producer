@@ -1,4 +1,4 @@
-package br.com.messageria.producer.business.tutorial.one;
+package br.com.producer.business.tutorial.one;
 
 import java.io.IOException;
 import java.util.Date;
@@ -8,8 +8,8 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 
-import br.com.messageria.producer.business.IEnviarMensagem;
-import br.com.messageria.producer.mocks.seeds.JsonExampleSeed;
+import br.com.producer.business.IEnviarMensagem;
+import br.com.producer.mocks.seeds.JsonExampleSeed;
 
 public class Send implements IEnviarMensagem {
 	private final static String QUEUE_NAME = "hello";
