@@ -1,4 +1,4 @@
-package br.com.producer.business.tutorial.one;
+package br.com.producer.business.tutorial1;
 
 import java.io.IOException;
 import java.util.Date;

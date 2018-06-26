@@ -1,4 +1,4 @@
-package br.com.producer.business.tutorial.two;
+package br.com.producer.business.tutorial2;
 
 import java.io.IOException;
 import java.util.Date;
@@ -24,21 +24,14 @@ public class NewTask implements IEnviarMensagem {
     	boolean durable = true; // Fila deve ser persistida no servidor, mantendo-a caso ele páre.
     	channel.queueDeclare(QUEUE_NAME, durable, false, false, null);
     	
-    	// Envio de Texto comum:
+    	//JsonExampleSeed message = new JsonExampleSeed();
     	String message = getMessage(argv) + " - em " + (new Date());
+    	
     	channel.basicPublish("", QUEUE_NAME, 
     			MessageProperties.PERSISTENT_TEXT_PLAIN,  // Mensagem deve ser persistida no servidor, mantendo-a caso ele páre.
     			message.getBytes());
     	System.out.println(" [x] Sent '" + message + "'");
-    	
-    	/*// Envio de Objeto JSON:
-    	JsonExampleSeed message2 = new JsonExampleSeed();
-    	channel.basicPublish("", 
-    			QUEUE_NAME, 
-    			MessageProperties.PERSISTENT_TEXT_PLAIN, 
-    			message2.getExemploJson().toString().getBytes());
-    	System.out.println(" [x] Sent '" + message2.getExemploJson().toString() + "'");*/
-    	
+    	    	
     	channel.close();
     	connection.close();
 	}
