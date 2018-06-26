@@ -3,8 +3,9 @@ package br.com.producer;
 import java.util.concurrent.TimeoutException;
 
 import br.com.producer.business.IEnviarMensagem;
-import br.com.producer.business.tutorial1.*;
-import br.com.producer.business.tutorial2.*;
+import br.com.producer.business.tutorial1.Send;
+import br.com.producer.business.tutorial2.NewTask;
+import br.com.producer.business.tutorial3.EmitLog;
 
 public class SenderApp {
 	
@@ -18,10 +19,19 @@ public class SenderApp {
     	case "2":
     		enviar = new NewTask();
     		break;
+    	case "3":
+    		enviar = new EmitLog();
+    		break;
+    		
     	default:
-    		enviar = new NewTask();
+    		enviar = new EmitLog();
     		break;
     	}
+    	
+    	System.out.println("Chamando " + (args[0] == null || args[0].isEmpty() ? "último tutorial" : "tutorial " + args[0]) + ". "); 
+    	System.out.println("Classe chamada: " + enviar.getClass().getSimpleName());
+    	
+    	
     	enviar.enviarMensagem(args);
     }
 }
