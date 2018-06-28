@@ -1,6 +1,7 @@
 package br.com.producer.testes;
 
 import java.io.IOException;
+import java.net.ConnectException;
 import java.util.concurrent.TimeoutException;
 
 import br.com.producer.AppUtils;
@@ -19,7 +20,8 @@ public class EnviarMensagensFilaTest {
 	private IMessageSender sender1 = new MessageSender(QUEUE_NAME, HOST_NAME);
 	private MessageSender sender2 = new MessageSender(QUEUE_NAME, HOST_NAME);
 	
-	public void enviarMensagens() throws IOException, TimeoutException, IllegalArgumentException {
+	public void enviarMensagens() 
+			throws ConnectException, IOException, TimeoutException, IllegalArgumentException {
 		// teste 1
 		sender1.send(message.getExemploJson()); 
 		

@@ -1,6 +1,7 @@
 package br.com.producer.sender;
 
 import java.io.IOException;
+import java.net.ConnectException;
 import java.util.Date;
 import java.util.concurrent.TimeoutException;
 
@@ -57,11 +58,13 @@ public class MessageSender implements IMessageSender {
 		this.message = message;
 	}
 
-	public void send() throws IllegalArgumentException, IOException, TimeoutException {
+	public void send() 
+			throws ConnectException, IOException, TimeoutException, IllegalArgumentException {
 		send(null);
 	}
 	
-	public void send(JsonObject json) throws IOException, TimeoutException, IllegalArgumentException {
+	public void send(JsonObject json) 
+			throws ConnectException, IOException, TimeoutException, IllegalArgumentException {
 		if(json != null && !json.toString().isEmpty()) {
 			setMessage(json);
 		}
@@ -89,7 +92,7 @@ public class MessageSender implements IMessageSender {
     			PERSISTENT_TEXT_PLAIN,
     			getMessage().toString().getBytes());
     	System.out.println((new Date()) + " [x] Sent: '" 
-    			+ AppUtils.reduceStringAt(message.toString(), 50) + "(...)'"); // exibir x caracteres no console
+    			+ AppUtils.reduceStringAt(message.toString(), 100) + "(...)'"); // exibir x caracteres no console
     	    	
     	channel.close();
     	connection.close();

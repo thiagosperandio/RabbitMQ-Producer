@@ -1,4 +1,4 @@
-package br.com.messageria.Producer;
+package br.com.producer;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

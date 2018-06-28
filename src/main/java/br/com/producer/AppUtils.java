@@ -3,6 +3,7 @@ package br.com.producer;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -20,8 +21,9 @@ public final class AppUtils {
 
 	public final static JsonObject toJsonObject(String message) {
 		JsonObject obj = Json.createObjectBuilder()
-				   .add("message", message)
-				   .build();
+				.add("messageDate", LocalDateTime.now().toString())
+				.add("message", message)
+				.build();
 		return obj;
 	}
 	
